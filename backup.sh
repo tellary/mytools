@@ -11,7 +11,7 @@ function backup() {
         echo "Backup destination doesn't exists: $DEST"
         exit 1
     fi
-    CURRENT_BAK=$DIR.current
+    CURRENT_BAK=$(basename $DIR).current
     DEST_CURRENT_BAK=$DEST/$CURRENT_BAK
     if [ ! -L $DEST_CURRENT_BAK ]
     then
@@ -24,7 +24,7 @@ function backup() {
         exit 1
     fi
 
-    TIMED_BAK_DIR=$DIR.`date "+%Y%m%d_%H%M"`
+    TIMED_BAK_DIR=$(basename $DIR).`date "+%Y%m%d_%H%M"`
     DEST_TIMED_BAK_DIR=$DEST/$TIMED_BAK_DIR
     if [ -e $DEST_TIMED_BAK_DIR ] 
     then
